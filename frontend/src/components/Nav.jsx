@@ -12,7 +12,7 @@ const Navbar = () => {
     <Link to="/" className="text-white hover:text-gray-200 italic">Home</Link>
   </li>
   <li>
-    <Link to="/sc" className="text-white hover:text-gray-200 italic">Social Gallery</Link>
+    <Link to="/profile" className="text-white hover:text-gray-200 italic">User Profile</Link>
   </li>
   <li>
     <Link to="/cart" className="text-white hover:text-gray-200 italic">Cart</Link>

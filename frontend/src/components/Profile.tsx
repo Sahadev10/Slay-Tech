@@ -15,7 +15,7 @@ import {
   Share2
 } from 'lucide-react';
 
-function App() {
+function Profile() {
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   
   // Mock user data - in a real app this would come from your backend
@@ -245,4 +245,4 @@ function App() {
   );
 }
 
-export default App;
+export default Profile;
