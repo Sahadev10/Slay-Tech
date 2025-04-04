@@ -1,29 +1,28 @@
+import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { CustomisationService } from './customisation.service';
+import { CreateCustomisationDto } from './dto/create-customisation.dto';
+import { UpdateCustomisationDto } from './dto/update-customisation.dto';
 
 import {
-  Controller,
-  Post,
-  Get,
-  Param,
-  Delete,
+
   UploadedFile,
   UseInterceptors,
-  Body,
   
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
-import { ImageService } from './image.service';
 
-@Controller('images')
-export class ImageController {
-  constructor(private readonly imageService: ImageService) {}
+
+@Controller('customisation')
+export class CustomisationController {
+  constructor(private readonly customisationService: CustomisationService) {}
 
   @Post('upload/:user_id')
   @UseInterceptors(
     FileInterceptor('file', {
       storage: diskStorage({
-        destination: './GANuploads', // Save in a local folder named 'uploads'
+        destination: './CUSuploads', // Save in a local folder named 'uploads'
         filename: (req, file, callback) => {
           const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
           const ext = extname(file.originalname); // Get file extension (e.g., .jpg)
@@ -37,25 +36,25 @@ export class ImageController {
     @Param('user_id') user_id: string,
   ) {
     // Generate a public URL to access the file
-    const imageUrl = `${process.env.BASE_URL}/GANuploads/${file.filename}`;
+    const imageUrl = `${process.env.BASE_URL}/CUSuploads/${file.filename}`;
   
     // Save the user ID and image URL to the database
-    return this.imageService.saveImage(user_id, imageUrl);
+    return this.customisationService.saveImage(user_id, imageUrl);
   }
   
 
   @Get(':image_id')
   async getImageById(@Param('image_id') image_id: string) {
-    return this.imageService.getImageById(image_id);
+    return this.customisationService.getImageById(image_id);
   }
 
   @Get('user/:user_id')
   async getImagesByUserId(@Param('user_id') user_id: string) {
-    return this.imageService.getImagesByUserId(user_id);
+    return this.customisationService.getImagesByUserId(user_id);
   }
 
   @Delete(':image_id')
   async deleteImage(@Param('image_id') image_id: string) {
-    return this.imageService.deleteImage(image_id);
+    return this.customisationService.deleteImage(image_id);
   }
 }

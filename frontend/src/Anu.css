@@ -1,6 +1,33 @@
-.anu-container {
+/* .anu-container {
     width: 100vw;
     height: 100vh;
     background-color: white;
+  }
+   */
+
+
+
+   .anu-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    
+  }
+
+  
+  .main-content {
+    padding-top: 60px; /* Adjust based on your Navbar height */
+  }
+  
+
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px; /* Adjust as needed */
+    background: white;
+    z-index: 1000;
+    box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.1);
   }
   

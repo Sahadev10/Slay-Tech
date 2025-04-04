@@ -14,11 +14,15 @@ import {
   MessageCircle,
   Share2
 } from 'lucide-react';
+import Urpic from "./pic";
+
+import { useNavigate } from "react-router-dom";
 
 function Profile() {
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
-  
-  // Mock user data - in a real app this would come from your backend
+  const navigate = useNavigate();
+
+  // Mock user data
   const user = {
     name: "Sarah Anderson",
     email: "sarah.anderson@example.com",
@@ -87,7 +91,7 @@ function Profile() {
         <div className="max-w-7xl mx-auto px-4 py-6">
           <div className="flex justify-between items-center">
             <h1 className="text-3xl font-bold text-gray-900">Profile</h1>
-            <button 
+            <button
               onClick={() => alert('Logout clicked')}
               className="flex items-center px-4 py-2 text-sm font-medium text-red-600 hover:text-red-700"
             >
@@ -101,8 +105,7 @@ function Profile() {
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          
-          {/* Left Column - Profile Info */}
+          {/* Left Column */}
           <div className="lg:col-span-1">
             <div className="bg-white rounded-lg shadow p-6">
               <div className="flex flex-col items-center">
@@ -116,16 +119,13 @@ function Profile() {
                   <MapPin className="w-4 h-4 mr-2" />
                   {user.address}
                 </p>
-                
-                <button 
-                  onClick={() => setIsGalleryOpen(true)}
-                  className="mt-4 flex items-center px-4 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition-colors"
-                >
-                  <ImageIcon className="w-4 h-4 mr-2" />
-                  Social Gallery
-                </button>
-                
-                {/* Social Links */}
+                <button
+      onClick={() => navigate("/picture")} // Navigate on click
+      className="mt-4 flex items-center px-4 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition-colors"
+    >
+      <ImageIcon className="w-4 h-4 mr-2" />
+      YOUR CREATIONS
+    </button>
                 <div className="flex space-x-4 mt-6">
                   <a href="#" className="text-gray-400 hover:text-blue-500">
                     <Facebook className="w-5 h-5" />
@@ -141,9 +141,9 @@ function Profile() {
             </div>
           </div>
 
-          {/* Right Column - Orders & Gallery */}
+          {/* Right Column */}
           <div className="lg:col-span-2">
-            {/* Previous Orders */}
+            {/* Orders */}
             <div className="bg-white rounded-lg shadow mb-8">
               <div className="p-6">
                 <h3 className="text-lg font-semibold flex items-center">
@@ -196,7 +196,7 @@ function Profile() {
           <div className="bg-white rounded-xl w-full max-w-6xl max-h-[90vh] overflow-hidden">
             <div className="p-4 border-b flex justify-between items-center">
               <h2 className="text-2xl font-bold">Social Gallery</h2>
-              <button 
+              <button
                 onClick={() => setIsGalleryOpen(false)}
                 className="p-2 hover:bg-gray-100 rounded-full"
               >
@@ -206,8 +206,8 @@ function Profile() {
             <div className="p-6 overflow-y-auto max-h-[calc(90vh-80px)]">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {user.socialGallery.map((post) => (
-                  <div 
-                    key={post.id} 
+                  <div
+                    key={post.id}
                     className="bg-white rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-[1.02]"
                   >
                     <div className="relative aspect-square">
@@ -219,19 +219,19 @@ function Profile() {
                     </div>
                     <div className="p-4">
                       <p className="text-gray-700 mb-3">{post.caption}</p>
-                      <div className="flex items-center justify-between text-gray-500">
-                        <button className="flex items-center gap-1 hover:text-red-500">
-                          <Heart className="w-4 h-4" />
+                      <div className="flex items-center justify-between text-sm text-gray-500">
+                        <div className="flex items-center space-x-2">
+                          <Heart className="w-4 h-4 text-red-500" />
                           <span>{post.likes}</span>
-                        </button>
-                        <button className="flex items-center gap-1 hover:text-blue-500">
-                          <MessageCircle className="w-4 h-4" />
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <MessageCircle className="w-4 h-4 text-blue-500" />
                           <span>{post.comments}</span>
-                        </button>
-                        <button className="flex items-center gap-1 hover:text-green-500">
-                          <Share2 className="w-4 h-4" />
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <Share2 className="w-4 h-4 text-gray-500" />
                           <span>Share</span>
-                        </button>
+                        </div>
                       </div>
                     </div>
                   </div>
