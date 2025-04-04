@@ -12,12 +12,19 @@ export class AuthController {
   @Post('register')
   async register(@Body() createAuthDto:CreateAuthDto){
     
-    return this.userservice.create(createAuthDto);
+    // return this.userservice.create(createAuthDto);
+    const val = await this.userservice.create(createAuthDto)
+
+    return this.authService.login(val);
   }
+
+
+
 
   @Post('login')
   async login(@Body() body: {email:string; password:string}){
     console.log("hello started");
+    console.log(body.email)
     const user = await this.authService.validateUser(body.email,body.password);
     if(!user) throw new UnauthorizedException('invalid credentials');
     return this.authService.login(user);
@@ -28,6 +35,7 @@ export class AuthController {
   getProfile(@Req() req:AuthenticatedRequest) {
     return req.user; // The authenticated user data
   }
+  
 
   // @UseGuards(JwtAuthGuard)
   // @Post('protected')

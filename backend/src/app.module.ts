@@ -11,6 +11,8 @@ import { AuthModule } from './auth/auth.module';
 import { ImageModule } from './image/image.module';
 import { UserModule } from './user/user.module';
 import { UploadModule } from './upload/upload.module';
+import { CustomisationModule } from './customisation/customisation.module';
+import { ScgallleryModule } from './scgalllery/scgalllery.module';
 
 
 @Module({
@@ -35,6 +37,8 @@ import { UploadModule } from './upload/upload.module';
     ImageModule,
     UserModule,
     UploadModule,
+    CustomisationModule,
+    ScgallleryModule,
   ],
   controllers: [AppController],
   providers: [AppService],

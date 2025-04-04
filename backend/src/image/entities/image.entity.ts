@@ -31,4 +31,6 @@ export class Image {
 
     @Column({ type: 'varchar', length: 255 })
     image_url: string;
+
+    
 }
