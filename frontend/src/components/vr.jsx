@@ -4,7 +4,7 @@ const Vr = () => {
   return (
     <div className="flex justify-center items-center p-4">
       <iframe
-        src="https://yisol-idm-vton.hf.space"
+        src="https://kwai-kolors-kolors-virtual-try-on.hf.space"
         frameBorder="0"
         width="850"
         height="450"
