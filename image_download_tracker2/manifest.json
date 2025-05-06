@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Image Download Tracker",
+  "version": "1.0",
+  "description": "Tracks image download clicks and sends them to a backend",
+  "permissions": ["activeTab", "contextMenus"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Image Download Tracker"
+  }
+}
