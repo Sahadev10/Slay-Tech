@@ -1,3 +1,4 @@
+
 // import React from "react";
 
 // const Vr = () => {
@@ -24,6 +25,7 @@ import React from "react";
 const Vr = () => {
   return (
     <div className="flex justify-center items-center p-4">
+
       <a
         href="https://kwai-kolors-kolors-virtual-try-on.hf.space"
         target="_blank"
@@ -32,8 +34,10 @@ const Vr = () => {
       >
         Open Virtual Try-On App
       </a>
+
     </div>
   );
 };
 
 export default Vr;
+

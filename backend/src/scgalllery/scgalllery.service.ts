@@ -210,12 +210,14 @@ export class GalleryService {
   }
 
 
+
   async getUserGallery(userId: string) {
     return this.galleryRepository.find({
       where: { user: { id: userId } },
       
     });
   }
+
   
   
 }

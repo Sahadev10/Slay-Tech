@@ -91,11 +91,11 @@ export class GalleryController {
     return this.galleryService.addComment( galleryId, text,req.user);
   }
 
+
   @UseGuards(JwtAuthGuard)
 @Get('me')
 async getMyImages(@Req() req: AuthenticatedRequest) {
   if (!req.user) throw new Error('Unauthorized');
   return this.galleryService.getUserGallery(req.user.userId);
 }
-
 }

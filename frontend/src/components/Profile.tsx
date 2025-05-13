@@ -258,6 +258,7 @@ import {
   Instagram,
   Twitter,
 } from 'lucide-react';
+
 import { useNavigate } from "react-router-dom";
 
 interface GalleryImage {
@@ -280,6 +281,7 @@ function Profile() {
         setUsername(decoded.sub || 'User');
       } catch (error) {
         console.error("Invalid token", error);
+
       }
     }
 
@@ -303,6 +305,7 @@ function Profile() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white shadow">
+
         <div className="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
           <h1 className="text-3xl font-bold text-gray-900">Profile</h1>
           <button
@@ -312,10 +315,12 @@ function Profile() {
             <LogOut className="w-4 h-4 mr-2" />
             Logout
           </button>
+
         </div>
       </div>
 
       {/* Main Content */}
+
       <div className="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Left Column */}
         <div className="bg-white rounded-lg shadow p-6 flex flex-col items-center">
@@ -346,8 +351,10 @@ function Profile() {
             <a href="#" className="text-gray-400 hover:text-blue-400">
               <Twitter className="w-5 h-5" />
             </a>
+
           </div>
         </div>
+
 
         {/* Right Column */}
         <div className="lg:col-span-2 bg-white rounded-lg shadow p-6">
@@ -364,6 +371,7 @@ function Profile() {
                     alt={`Gallery image ${index + 1}`}
                     className="absolute inset-0 w-full h-full object-cover rounded-lg"
                   />
+
                 </div>
               ))
             ) : (
@@ -372,6 +380,7 @@ function Profile() {
           </div>
         </div>
       </div>
+
     </div>
   );
 }

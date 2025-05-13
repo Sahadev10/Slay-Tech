@@ -78,6 +78,7 @@ const Navbar = () => {
           </li>
           <li>
             <Link
+
               to="/measure"
               className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors duration-200 group"
             >
@@ -87,6 +88,7 @@ const Navbar = () => {
           </li>
           <li>
             <Link
+
               to="/social"
               className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors duration-200 group"
             >

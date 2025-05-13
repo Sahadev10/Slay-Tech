@@ -12,9 +12,11 @@ import {
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
+
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { UseGuards } from '@nestjs/common';
 import { Req,Res } from '@nestjs/common';
+
 
 @Controller('customisation')
 export class CustomisationController {
@@ -59,6 +61,7 @@ export class CustomisationController {
   async deleteImage(@Param('image_id') image_id: string) {
     return this.customisationService.deleteImage(image_id);
   }
+
 
   @UseGuards(JwtAuthGuard)
   @Get('style/stylemix-redirect')
