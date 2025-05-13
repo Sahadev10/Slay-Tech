@@ -78,6 +78,17 @@ const Navbar = () => {
           </li>
           <li>
             <Link
+
+              to="/measure"
+              className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors duration-200 group"
+            >
+              <Shirt className="w-4 h-4 group-hover:text-purple-400" />
+              <span>Measure</span>
+            </Link>
+          </li>
+          <li>
+            <Link
+
               to="/social"
               className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors duration-200 group"
             >

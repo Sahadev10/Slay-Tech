@@ -36,7 +36,14 @@ import Dress from "./components/dress";
 import Socio from "./components/social";
 import Vr from "./components/vr.jsx";
 import Footer from "./components/Footer.jsx";
+
+import Stylemix from "./components/Stylemix.jsx";
+import GenBrazer from "./components/gen_blazer.jsx";
+import GenDress from "./components/gen_dress.jsx";
+import GenTop from "./components/gen_top.jsx";
 import "./Anu.css";
+import BodyMeasure from "./components/measurement.jsx";
+
 
 const About = () => <h2 className="text-center mt-5">About Us</h2>;
 const Contact = () => <h2 className="text-center mt-5">Contact Us</h2>;
@@ -49,13 +56,22 @@ const Anu = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/home" element={<Home />} />
-      <Route path="/vr" element={<Vr />} />
+
+      <Route path="/sm" element={<Stylemix />} />
+
       <Route path="/social" element={<Socio />} />
       <Route path="/picture" element={<Urpic />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/logout" element={<Contact />} />
       <Route path="/dress" element={<Dress />} />
+
+      <Route path="/genblazer" element={<GenBrazer />} />
+      <Route path="/gendress" element={<GenDress />} />
+      <Route path="/gentop" element={<GenTop />} />
+      <Route path="/measure" element={<BodyMeasure />} />
+      
+
     </Routes>
   </div>
   <Footer className="footer" />

@@ -13,6 +13,10 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
 
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { UseGuards } from '@nestjs/common';
+import { Req,Res } from '@nestjs/common';
+
 
 @Controller('customisation')
 export class CustomisationController {
@@ -57,4 +61,22 @@ export class CustomisationController {
   async deleteImage(@Param('image_id') image_id: string) {
     return this.customisationService.deleteImage(image_id);
   }
+
+
+  @UseGuards(JwtAuthGuard)
+  @Get('style/stylemix-redirect')
+  async getStylemixRedirect(@Req() req: Request) {
+    const user = (req as any).user; // cast needed to access user field
+  
+    if (!user || !user.id) {
+      return { message: 'User ID not found in token' };
+    }
+    console.log("ggggg")
+    console.log(user.id);
+  
+    const redirectUrl = `https://huggingface.co/spaces/uhdessai/StyleMixing?user_id=${user.id}`;
+    return { redirectUrl };
+  }
+  
+
 }

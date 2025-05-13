@@ -120,11 +120,22 @@ const Home = () => {
 
 <br />
 <br />
-<div className="mt-6 w-full h-32 bg-gray-300 rounded-tr-full rounded-bl-full shadow-lg flex items-center justify-center">
-<p className="text-3xl italic font-semibold text-gray-700">
-    FUSE YOUR CLOTHES
+{/* <div className="mt-6 w-full h-32 bg-gray-300 rounded-tr-full rounded-bl-full shadow-lg flex items-center justify-center">
+  <p className="text-3xl italic font-semibold text-gray-700">
+   FUSE THE CLOTHES
   </p>
+</div> */}
+
+<div className="mt-6 w-full h-32 bg-gray-300 rounded-tr-full rounded-bl-full shadow-lg flex items-center justify-center">
+  <Link
+    to="/sm"
+    className="text-3xl italic font-semibold text-gray-700 hover:text-purple-600 transition-colors duration-200"
+  >
+    FUSE THE CLOTHES
+  </Link>
 </div>
+
+
 
 <br />
 <br />
@@ -139,7 +150,7 @@ const Home = () => {
     <p className="mt-2 text-lg font-semibold text-gray-700">Dress</p>
   </div>
   <div className="flex flex-col items-center">
-    <Link to="/page2">
+    <Link to="/gentop">
       <img src="/public/images/i2.jpg" alt="Image 2" className="w-40 h-40 object-cover rounded-lg shadow-lg cursor-pointer" />
     </Link>
     <p className="mt-2 text-lg font-semibold text-gray-700">Tops</p>
@@ -154,10 +165,10 @@ const Home = () => {
 */}
 
   <div className="flex flex-col items-center">
-    <Link to="/page4">
+    <Link to="/genblazer">
       <img src="/public/images/i3.jpg" alt="Image 4" className="w-40 h-40 object-cover rounded-lg shadow-lg cursor-pointer" />
     </Link>
-    <p className="mt-2 text-lg font-semibold text-gray-700">men</p>
+    <p className="mt-2 text-lg font-semibold text-gray-700">Blazer</p>
   </div>
 </div>
 

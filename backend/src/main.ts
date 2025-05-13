@@ -4,6 +4,10 @@ import { join } from 'path';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 
+import { HttpModule } from '@nestjs/axios';
+
+
+
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -15,7 +19,11 @@ async function bootstrap() {
   app.use(bodyParser.json()); // ✅ Ensure body parsing
 
   app.enableCors({
-    origin: 'http://localhost:5173', // Replace with your frontend URL (if different)
+    // origin: 'http://localhost:5173', // Replace with your frontend URL (if different)
+    origin: [
+      'http://localhost:5173', // Your local frontend URL
+      'https://huggingface.co/spaces/uhdessai/StyleMixing', // Your Hugging Face URL
+    ],
     credentials: true, // Allow credentials if needed
   });
 

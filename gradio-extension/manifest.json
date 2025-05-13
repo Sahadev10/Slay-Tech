@@ -1,0 +1,19 @@
+{
+    "manifest_version": 2,
+    "name": "Gradio Image Saver",
+    "version": "1.0",
+    "description": "Auto-send Gradio images to backend",
+    "permissions": [
+      "activeTab",
+      "http://127.0.0.1:3000/*",
+      "http://localhost:3000/*",
+      "https://kwai-kolors-kolors-virtual-try-on.hf.space/*"
+    ],
+    "content_scripts": [
+      {
+        "matches": ["https://kwai-kolors-kolors-virtual-try-on.hf.space/*"],
+        "js": ["content.js"]
+      }
+    ]
+  }
+  
