@@ -5,6 +5,7 @@ import { Customisation } from "src/customisation/entities/customisation.entity";
 import { Gallery } from "src/scgalllery/entities/scgalllery.entity";
 import { PostComment } from "src/scgalllery/entities/post-comment.entity";
 import { PostLike } from "src/scgalllery/entities/post-like.entity";
+import { Measurement } from "src/upload/entities/measurement.entity";
 
 @Entity({name : 'users'})
 export class Auth {
@@ -36,7 +37,10 @@ export class Auth {
     @OneToMany(() => PostComment, (comment) => comment.user) // ✅ Added relationship for Comments
     comments: PostComment[];
 
-    
+    // In auth.entity.ts
+@OneToMany(() => Measurement, (measurement) => measurement.user)
+measurements: Measurement[];
+
 
 
 }

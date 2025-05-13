@@ -2,7 +2,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Measurement } from './entities/measrement.entities'
+import { Measurement } from './entities/measurement.entity'
 
 @Injectable()
 export class MeasurementsService {

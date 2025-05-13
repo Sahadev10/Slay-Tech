@@ -10,6 +10,9 @@ import {
   Body,
   
 } from '@nestjs/common';
+import { Req } from '@nestjs/common';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { UseGuards } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
@@ -51,6 +54,7 @@ export class ImageController {
 
   @Get('user/:user_id')
   async getImagesByUserId(@Param('user_id') user_id: string) {
+    console.log("jhgg")
     return this.imageService.getImagesByUserId(user_id);
   }
 
@@ -58,4 +62,52 @@ export class ImageController {
   async deleteImage(@Param('image_id') image_id: string) {
     return this.imageService.deleteImage(image_id);
   }
+
+
+  @UseGuards(JwtAuthGuard)
+  @Get('gen/dress')
+  async getStylemixRedirect(@Req() req: Request) {
+    const user = (req as any).user; // cast needed to access user field
+  
+    if (!user || !user.id) {
+      return { message: 'User ID not found in token' };
+    }
+    console.log("ggggg")
+    console.log(user.id);
+  
+    const redirectUrl = `https://huggingface.co/spaces/SLAYTECH/Dress_model?user_id=${user.id}`;
+    return { redirectUrl };
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('gen/top')
+  async getStylemixRedirecttop(@Req() req: Request) {
+    const user = (req as any).user; // cast needed to access user field
+  
+    if (!user || !user.id) {
+      return { message: 'User ID not found in token' };
+    }
+    console.log("ggggg")
+    console.log(user.id);
+  
+    const redirectUrl = `https://huggingface.co/spaces/SLAYTECH/top_model?user_id=${user.id}`;
+    return { redirectUrl };
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('gen/blazer')
+  async getStylemixRedirectblazer(@Req() req: Request) {
+    const user = (req as any).user; // cast needed to access user field
+  
+    if (!user || !user.id) {
+      return { message: 'User ID not found in token' };
+    }
+    console.log("ggggg")
+    console.log(user.id);
+  
+    const redirectUrl = `https://huggingface.co/spaces/SLAYTECH/blazer_model?user_id=${user.id}`;
+    return { redirectUrl };
+  }
+
+
 }

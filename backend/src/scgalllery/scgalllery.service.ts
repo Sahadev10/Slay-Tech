@@ -208,6 +208,14 @@ export class GalleryService {
   
     return newComment;
   }
+
+
+  async getUserGallery(userId: string) {
+    return this.galleryRepository.find({
+      where: { user: { id: userId } },
+      
+    });
+  }
   
   
 }
