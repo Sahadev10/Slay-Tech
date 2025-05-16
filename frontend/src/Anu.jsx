@@ -43,6 +43,8 @@ import GenDress from "./components/gen_dress.jsx";
 import GenTop from "./components/gen_top.jsx";
 import "./Anu.css";
 import BodyMeasure from "./components/measurement.jsx";
+import TailorList from "./components/tailorlist.jsx"; 
+import TailorRegistration from "./components/tailor.jsx";
 
 
 const About = () => <h2 className="text-center mt-5">About Us</h2>;
@@ -58,6 +60,9 @@ const Anu = () => {
       <Route path="/home" element={<Home />} />
 
       <Route path="/sm" element={<Stylemix />} />
+        <Route path="/select-tailor" element={<TailorList />} />
+
+        <Route path="/tailor" element={<TailorRegistration />} />
 
       <Route path="/social" element={<Socio />} />
       <Route path="/picture" element={<Urpic />} />
