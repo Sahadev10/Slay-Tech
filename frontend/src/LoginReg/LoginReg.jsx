@@ -38,7 +38,7 @@ const LoginReg = () => {
       }
   
       try {
-        await axios.post("http://localhost:3000/auth/register", {
+        const response = await axios.post("http://localhost:3000/auth/register", {
           username, // Include username
           email,
           password,
@@ -51,6 +51,9 @@ const LoginReg = () => {
         setEmail("");
         setPassword("");
         setConfirmPassword("");
+        localStorage.setItem("token", response.data.accessToken);
+        axios.defaults.headers.common["Authorization"] = `Bearer ${response.data.accessToken}`;
+        console.log(response.data.accessToken)
         navigate("/");
       } catch (err) {
         setError("Registration failed! Please try again.");
@@ -62,6 +65,9 @@ const LoginReg = () => {
           email,
           password,
         });
+
+
+  console.log("Login API Response:", response);
         setSuccess("Login successful!");
         setError("");
         localStorage.setItem("token", response.data.accessToken);
@@ -149,3 +155,4 @@ const LoginReg = () => {
 };
 
 export default LoginReg;
+
