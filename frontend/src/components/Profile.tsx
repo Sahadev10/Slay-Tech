@@ -266,6 +266,14 @@ interface GalleryImage {
   caption: string | null;
 }
 
+import { useNavigate } from "react-router-dom";
+
+interface GalleryImage {
+  id: string;
+  imageUrl: string;
+  caption: string | null;
+}
+
 function Profile() {
   const [galleryImages, setGalleryImages] = useState<GalleryImage[]>([]);
   const [username, setUsername] = useState('');
@@ -303,19 +311,16 @@ function Profile() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white shadow">
-        <div className="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
-          <h1 className="text-3xl font-bold text-gray-900">Profile</h1>
-          <button
-            onClick={() => alert('Logout clicked')}
-            className="flex items-center px-4 py-2 text-sm font-medium text-red-600 hover:text-red-700"
-          >
-            <LogOut className="w-4 h-4 mr-2" />
-            Logout
-          </button>
-        </div>
-      </div>
+  <div className="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+    <div className="flex-grow text-center">
+      <h1 className="text-3xl font-bold text-gray-900">Profile</h1>
+    </div>
+  </div>
+</div>
+
 
       {/* Main Content */}
+
       <div className="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Left Column */}
         <div className="bg-white rounded-lg shadow p-6 flex flex-col items-center">
@@ -336,18 +341,9 @@ function Profile() {
             <ImageIcon className="w-4 h-4 mr-2" />
             YOUR CREATIONS
           </button>
-          <div className="flex space-x-4 mt-6">
-            <a href="#" className="text-gray-400 hover:text-blue-500">
-              <Facebook className="w-5 h-5" />
-            </a>
-            <a href="#" className="text-gray-400 hover:text-pink-500">
-              <Instagram className="w-5 h-5" />
-            </a>
-            <a href="#" className="text-gray-400 hover:text-blue-400">
-              <Twitter className="w-5 h-5" />
-            </a>
-          </div>
+          
         </div>
+
 
         {/* Right Column */}
         <div className="lg:col-span-2 bg-white rounded-lg shadow p-6">
