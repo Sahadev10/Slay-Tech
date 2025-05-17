@@ -305,19 +305,13 @@ function Profile() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white shadow">
+  <div className="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+    <div className="flex-grow text-center">
+      <h1 className="text-3xl font-bold text-gray-900">Profile</h1>
+    </div>
+  </div>
+</div>
 
-        <div className="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
-          <h1 className="text-3xl font-bold text-gray-900">Profile</h1>
-          <button
-            onClick={() => alert('Logout clicked')}
-            className="flex items-center px-4 py-2 text-sm font-medium text-red-600 hover:text-red-700"
-          >
-            <LogOut className="w-4 h-4 mr-2" />
-            Logout
-          </button>
-
-        </div>
-      </div>
 
       {/* Main Content */}
 
@@ -341,18 +335,7 @@ function Profile() {
             <ImageIcon className="w-4 h-4 mr-2" />
             YOUR CREATIONS
           </button>
-          <div className="flex space-x-4 mt-6">
-            <a href="#" className="text-gray-400 hover:text-blue-500">
-              <Facebook className="w-5 h-5" />
-            </a>
-            <a href="#" className="text-gray-400 hover:text-pink-500">
-              <Instagram className="w-5 h-5" />
-            </a>
-            <a href="#" className="text-gray-400 hover:text-blue-400">
-              <Twitter className="w-5 h-5" />
-            </a>
-
-          </div>
+          
         </div>
 
 
