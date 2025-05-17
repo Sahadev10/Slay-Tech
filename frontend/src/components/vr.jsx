@@ -1,43 +1,24 @@
-
-// import React from "react";
-
-// const Vr = () => {
-//   return (
-//     <div className="flex justify-center items-center p-4">
-//       <iframe
-//         // src="https://yisol-idm-vton.hf.space"
-//         src="https://kwai-kolors-kolors-virtual-try-on.hf.space"
-//         frameBorder="0"
-//         width="850"
-//         height="450"
-//         className="rounded-lg shadow-lg"
-//         title="Virtual Try-On"
-//       ></iframe>
-//     </div>
-//   );
-// };
-
-// export default Vr;
-
-
 import React from "react";
 
 const Vr = () => {
   return (
-    <div className="flex justify-center items-center p-4">
+    <div className="fixed inset-0 z-0">
+      {/* Fullscreen iframe */}
+      <iframe
+        src="https://weshopai-weshopai-virtual-try-on.hf.space"
+        frameBorder="0"
+        className="w-full h-full"
+      ></iframe>
 
-      <a
-        href="https://kwai-kolors-kolors-virtual-try-on.hf.space"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transition duration-300"
-      >
-        Open Virtual Try-On App
-      </a>
-
+      {/* Taller black bar with centered title */}
+      <div className="absolute top-0 left-0 w-full h-60 bg-black text-white z-10 flex items-center  justify-center">
+        <div className="text-center">
+          <div className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent transform transition-transform group-hover:scale-105">Virtual Try On</div>
+          <div className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent transform transition-transform group-hover:scale-105">Slay in your own style</div>
+        </div>
+      </div>
     </div>
   );
 };
 
 export default Vr;
-
