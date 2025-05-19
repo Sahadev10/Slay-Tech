@@ -140,7 +140,7 @@ export class GalleryService {
     });
   }
 
-    async addImage(userId: string, imageUrl: string, caption?: string): Promise<Gallery> {
+    async addImage(userId: number, imageUrl: string, caption?: string): Promise<Gallery> {
     const user = await this.authRepository.findOne({ where: { id: userId } });
 
     if (!user) {
@@ -210,7 +210,7 @@ export class GalleryService {
   }
 
 
-  async getUserGallery(userId: string) {
+  async getUserGallery(userId: number) {
     return this.galleryRepository.find({
       where: { user: { id: userId } },
       

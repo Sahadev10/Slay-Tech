@@ -5,7 +5,7 @@ import { Customisation } from "src/customisation/entities/customisation.entity";
 import { Gallery } from "src/scgalllery/entities/scgalllery.entity";
 import { PostComment } from "src/scgalllery/entities/post-comment.entity";
 import { PostLike } from "src/scgalllery/entities/post-like.entity";
-
+import { Vr } from "src/vr/entities/vr.entity";
 import { Measurement } from "src/upload/entities/measurement.entity";
 
 
@@ -13,7 +13,7 @@ import { Measurement } from "src/upload/entities/measurement.entity";
 export class Auth {
 
     @PrimaryGeneratedColumn()
-    id:string;
+    id:number;
 
     @Column({type: 'text', unique:true})
     username: string;
@@ -26,6 +26,10 @@ export class Auth {
 
     @OneToMany(()=>Image,(image)=>image.auth)
     images:Image[];
+
+
+    @OneToMany(()=>Vr,(vr)=>vr.auth)
+    vr:Vr[];
 
     @OneToMany(()=>Customisation,(customisation)=>customisation.auth)    
     cus_images:Customisation[];

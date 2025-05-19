@@ -36,6 +36,7 @@ import Dress from "./components/dress";
 import Socio from "./components/social";
 import Vr from "./components/vr.jsx";
 import Footer from "./components/Footer.jsx";
+
 import Stylemix from "./components/Stylemix.jsx";
 import GenBrazer from "./components/gen_blazer.jsx";
 import GenDress from "./components/gen_dress.jsx";
@@ -43,6 +44,7 @@ import GenTop from "./components/gen_top.jsx";
 import "./Anu.css";
 import BodyMeasure from "./components/measurement.jsx";
 import TailorList from "./components/tailorlist.jsx"; 
+import Customization from "./components/customisation.jsx";
 import TailorRegistration from "./components/tailor.jsx";
 
 
@@ -57,6 +59,7 @@ const Anu = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/home" element={<Home />} />
+      <Route path="/customization" element={<Customization />} />
 
       <Route path="/sm" element={<Stylemix />} />
         <Route path="/select-tailor" element={<TailorList />} />
@@ -68,12 +71,14 @@ const Anu = () => {
       <Route path="/profile" element={<Profile />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/logout" element={<Contact />} />
-      <Route path="/dress" element={<Dress />} />
+      <Route path="/dress" element={<GenDress />} />
+<Route path="/vr" element={<Vr />} />
       <Route path="/genblazer" element={<GenBrazer />} />
       <Route path="/gendress" element={<GenDress />} />
       <Route path="/gentop" element={<GenTop />} />
       <Route path="/measure" element={<BodyMeasure />} />
       
+
     </Routes>
   </div>
   <Footer className="footer" />

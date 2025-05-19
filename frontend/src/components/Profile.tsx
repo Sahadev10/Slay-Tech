@@ -250,6 +250,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { jwtDecode } from 'jwt-decode';
+
 import {
   LogOut,
   MapPin,
@@ -258,7 +259,6 @@ import {
   Instagram,
   Twitter,
 } from 'lucide-react';
-import { useNavigate } from "react-router-dom";
 
 interface GalleryImage {
   id: string;

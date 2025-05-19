@@ -37,7 +37,7 @@ export class ImageController {
   )
   async uploadImage(
     @UploadedFile() file: Express.Multer.File,
-    @Param('user_id') user_id: string,
+    @Param('user_id') user_id: number,
   ) {
     // Generate a public URL to access the file
     const imageUrl = `${process.env.BASE_URL}/GANuploads/${file.filename}`;
@@ -53,7 +53,7 @@ export class ImageController {
   }
 
   @Get('user/:user_id')
-  async getImagesByUserId(@Param('user_id') user_id: string) {
+  async getImagesByUserId(@Param('user_id') user_id: number) {
     console.log("jhgg")
     return this.imageService.getImagesByUserId(user_id);
   }

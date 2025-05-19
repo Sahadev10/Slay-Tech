@@ -25,7 +25,7 @@ export class UserService {
     return this.authRepository.find();
   }
 
-  async findOne(id:string): Promise<Auth>{
+  async findOne(id:number): Promise<Auth>{
     const user = await this.authRepository.findOne({where: {id } });
     if(!user) throw new NotFoundException('USER NOT FOUND');
     return user;
@@ -33,7 +33,7 @@ export class UserService {
 
 
 
-  async update(id: string, updateAuthDto: UpdateAuthDto): Promise<Auth> {
+  async update(id: number, updateAuthDto: UpdateAuthDto): Promise<Auth> {
     const user = await this.authRepository.findOne({ where: { id } });
     if (!user) {
       throw new NotFoundException('User not found');
@@ -43,7 +43,7 @@ export class UserService {
     return this.authRepository.save(user);
   }
 
-  async delete(id:string): Promise<void>{
+  async delete(id:number): Promise<void>{
     const user = await this.authRepository.findOne({where : {id}});
     if (!user) {
       throw new NotFoundException('User not found');

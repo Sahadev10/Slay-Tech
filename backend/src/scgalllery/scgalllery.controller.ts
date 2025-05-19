@@ -71,7 +71,7 @@ export class GalleryController {
 
     @Post(':userId/add')
   async addImageToGallery(
-    @Param('userId') userId: string,
+    @Param('userId') userId: number,
     @Body() createGalleryDto: CreateGalleryDto,
   ) {
     return this.galleryService.addImage(userId, createGalleryDto.imageUrl, createGalleryDto.caption);

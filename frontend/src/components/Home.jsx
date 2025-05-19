@@ -107,7 +107,13 @@ const Home = () => {
   </h2>
 
   {/* Button below the text */}
-  <L redirectPath="/customization" />
+  {/* <L redirectPath="/customization" /> */}
+  <Link
+    to="/customization"
+    className="text-3xl italic font-semibold text-gray-700 hover:text-purple-600 transition-colors duration-200"
+  >
+    Customisation
+  </Link>
 </div>
 
 

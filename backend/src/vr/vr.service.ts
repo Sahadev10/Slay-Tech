@@ -10,7 +10,7 @@ export class VrService {
 
 
 
-  async saveImage(user_id: string, imageUrl: string): Promise<Vr> {
+  async saveImage(user_id: number, imageUrl: string): Promise<Vr> {
     const image = this.vrRepo.create({
         auth: { id: user_id },
         image_url: imageUrl,
@@ -27,7 +27,7 @@ async getImageById(image_id: string): Promise<Vr> {
     return image;
 }
 
-async getImagesByUserId(user_id: string): Promise<Vr[]> {
+async getImagesByUserId(user_id: number): Promise<Vr[]> {
     return this.vrRepo.find({
         where: { auth: { id: user_id } },
         relations: ['auth'],
