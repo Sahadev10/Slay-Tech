@@ -12,11 +12,9 @@ import {
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
-
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { UseGuards } from '@nestjs/common';
 import { Req,Res } from '@nestjs/common';
-
 
 @Controller('customisation')
 export class CustomisationController {
@@ -37,7 +35,7 @@ export class CustomisationController {
   )
   async uploadImage(
     @UploadedFile() file: Express.Multer.File,
-    @Param('user_id') user_id: string,
+    @Param('user_id') user_id: number,
   ) {
     // Generate a public URL to access the file
     const imageUrl = `${process.env.BASE_URL}/CUSuploads/${file.filename}`;
@@ -48,20 +46,19 @@ export class CustomisationController {
   
 
   @Get(':image_id')
-  async getImageById(@Param('image_id') image_id: string) {
+  async getImageById(@Param('image_id') image_id: number) {
     return this.customisationService.getImageById(image_id);
   }
 
   @Get('user/:user_id')
-  async getImagesByUserId(@Param('user_id') user_id: string) {
+  async getImagesByUserId(@Param('user_id') user_id: number) {
     return this.customisationService.getImagesByUserId(user_id);
   }
 
   @Delete(':image_id')
-  async deleteImage(@Param('image_id') image_id: string) {
+  async deleteImage(@Param('image_id') image_id: number) {
     return this.customisationService.deleteImage(image_id);
   }
-
 
   @UseGuards(JwtAuthGuard)
   @Get('style/stylemix-redirect')
@@ -75,6 +72,19 @@ export class CustomisationController {
     console.log(user.id);
   
     const redirectUrl = `https://huggingface.co/spaces/uhdessai/StyleMixing?user_id=${user.id}`;
+    return { redirectUrl };
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('/cust/image')
+  async customize(@Req() req: any) {
+    const userId = req.user?.id;
+
+    if (!userId) {
+      return { message: 'User ID not found in token' };
+    }
+
+    const redirectUrl = `https://huggingface.co/spaces/SLAYTECH/LaatenSpaceManipulation?user_id=${userId}`;
     return { redirectUrl };
   }
   

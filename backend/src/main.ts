@@ -18,14 +18,22 @@ async function bootstrap() {
   app.use('/CUSuploads', express.static(join(__dirname, '..', 'CUSuploads')));
   app.use(bodyParser.json()); // ✅ Ensure body parsing
 
+  // app.enableCors({
+  //   // origin: 'http://localhost:5173', // Replace with your frontend URL (if different)
+  //   origin: [
+  //     'http://localhost:5173', // Your local frontend URL
+  //     'https://huggingface.co/spaces/uhdessai/StyleMixing', // Your Hugging Face URL
+  //     'https://kwai-kolors-kolors-virtual-try-on.hf.space',
+  //   ],
+  //   credentials: true, // Allow credentials if needed
+
+  // });
+
   app.enableCors({
-    // origin: 'http://localhost:5173', // Replace with your frontend URL (if different)
-    origin: [
-      'http://localhost:5173', // Your local frontend URL
-      'https://huggingface.co/spaces/uhdessai/StyleMixing', // Your Hugging Face URL
-    ],
-    credentials: true, // Allow credentials if needed
+    origin: "*", // For dev only
+    credentials: true,
   });
+  console.log('🌐 CORS enabled for frontend apps')
 
   await app.listen(3000);
 

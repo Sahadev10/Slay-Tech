@@ -13,6 +13,7 @@ import { UserModule } from './user/user.module';
 import { UploadModule } from './upload/upload.module';
 import { CustomisationModule } from './customisation/customisation.module';
 import { ScgallleryModule } from './scgalllery/scgalllery.module';
+import { VrModule } from './vr/vr.module';
 
 
 @Module({
@@ -39,6 +40,7 @@ import { ScgallleryModule } from './scgalllery/scgalllery.module';
     UploadModule,
     CustomisationModule,
     ScgallleryModule,
+    VrModule,
   ],
   controllers: [AppController],
   providers: [AppService],

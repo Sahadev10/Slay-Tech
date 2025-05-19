@@ -1,4 +1,3 @@
-
 // import React, { useState } from 'react';
 // import { Wand2, ShirtIcon, Sparkles, ArrowRight } from 'lucide-react';
 
@@ -107,7 +106,6 @@ function Dress() {
   const [hoveredOption, setHoveredOption] = useState<string | null>(null);
   const navigate = useNavigate(); // 🆕
 
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50">
       <div className="container mx-auto px-4 py-12">
@@ -146,12 +144,10 @@ function Dress() {
                 <p className="text-gray-600 mb-4">
                   Create unique fashion designs using AI. Transform your ideas into stunning garments.
                 </p>
-
                 <button
                   onClick={() => navigate('/gendress')} // ✅ Navigate to /sm
                   className="flex items-center justify-center w-full bg-purple-600 text-white py-3 px-6 rounded-lg hover:bg-purple-700 transition-colors group"
                 >
-
                   Start Generating
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
@@ -185,12 +181,10 @@ function Dress() {
                 <p className="text-gray-600 mb-4">
                   Fuse your clothes
                 </p>
-
                 <button
                   onClick={() => navigate('/sm')} // ✅ Navigate to /vr
                   className="flex items-center justify-center w-full bg-pink-600 text-white py-3 px-6 rounded-lg hover:bg-pink-700 transition-colors group"
                 >
-
                   Try Now
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
@@ -210,4 +204,3 @@ function Dress() {
 }
 
 export default Dress;
-

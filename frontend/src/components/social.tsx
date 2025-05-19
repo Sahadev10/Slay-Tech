@@ -111,15 +111,15 @@ const Socio: React.FC = () => {
   return (
     <div className="bg-black text-white min-h-screen">
       {/* Navigation */}
-     <nav className="bg-gradient-to-r from-gray-800 to-gray-900 p-4 shadow-xl fixed w-full top-16 z-40">
+     <nav className="bg-white py-1 px-4 shadow-xl fixed w-full top-16 z-40">
   <div className="max-w-5xl mx-auto px-4">
     <div className="flex items-center justify-between h-20">
       {/* Logo/Title */}
       <div className="flex items-center">
         <Camera className="h-6 w-6 text-purple-600" />
-        <span className="ml-2 text-lg font-semibold text-white">
-          SLAYgram
-        </span>
+        <span className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent transform transition-transform group-hover:scale-105">
+            SlayGram
+          </span>
       </div>
 
       {/* Search Bar */}
@@ -139,83 +139,131 @@ const Socio: React.FC = () => {
 
 
       {/* Main Content */}
-      <main className="max-w-6xl mx-auto pt-20 px-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {/* Posts */}
-          {gallery.map(post => (
-            <article key={post.id} className="bg-white rounded-xl shadow hover:shadow-md transition overflow-hidden text-black">
-              <div className="relative">
-                <img
-                  src={post.imageUrl}
-                  alt="Post"
-                  className="w-full aspect-square object-cover"
-                />
-              </div>
+      <main className="max-w-6xl mx-auto pt-[144px] px-6">
 
-              <div className="p-4">
-                <div className="flex items-center space-x-4 mb-4">
-                  <button 
-                    onClick={() => handleLike(post.id)} 
-                    className="transition-colors"
-                  >
-                    <Heart 
-                      className="h-6 w-6" 
-                      fill={likedPosts.has(post.id) ? "red" : "none"} 
-                      stroke={likedPosts.has(post.id) ? "red" : "black"} 
-                    />
-                  </button>
-                  <button onClick={() => setShowCommentInput(prev => ({ ...prev, [post.id]: !prev[post.id] }))} className="hover:text-blue-500 transition-colors">
-                    <MessageCircle className="h-6 w-6" />
-                  </button>
-                  <button className="hover:text-green-500 transition-colors">
-                    <Share2 className="h-6 w-6" />
-                  </button>
-                </div>
-                <div className="font-semibold mb-1">{post.likes.length} likes</div>
-                <p className="text-sm">
-                  <span className="font-semibold mr-2">{post.user.username}</span>
-                  {post.caption}
-                </p>
-                {showCommentInput[post.id] && (
-                  <div className="mt-2">
-                    <input
-                      type="text"
-                      value={commentText[post.id] || ""}
-                      onChange={(e) => setCommentText({ ...commentText, [post.id]: e.target.value })}
-                      placeholder="Add a comment..."
-                      className="border rounded-lg p-2 w-full"
-                    />
-                    <button onClick={() => handleComment(post.id)} className="bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg px-4 py-1 mt-2">Post</button>
-                    <div className="mt-2">
-                      {post.comments.slice(0, showMoreComments[post.id] ? post.comments.length : 6).map((c, index) => (
-                        <p key={index} className="text-xs text-gray-500">
-                          {c.comment} - <strong>{c.user?.username || "Anonymous"}</strong>
-                        </p>
-                      ))}
-                      {post.comments.length > 6 && (
-                        <button
-                          onClick={() => setShowMoreComments(prev => ({ ...prev, [post.id]: !prev[post.id] }))}
-                          className="text-blue-500 hover:underline"
-                        >
-                          {showMoreComments[post.id] ? 'View Less' : 'View More'}
-                        </button>
-                      )}
-                    </div>
-                  </div>
-                )}
-                <div className="mt-4">
-                  <button
-                    onClick={() => navigate('/select-tailor')}
-                    className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors"
-                  >
-                    Contact a Tailor
-                  </button>
-                </div>
-              </div>
-            </article>
-          ))}
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+    {/* Posts */}
+    {gallery.map(post => (
+      <article 
+        key={post.id} 
+        className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden text-black flex flex-col"
+      >
+        <div className="relative">
+          <img
+            src={post.imageUrl}
+            alt="Post"
+            className="w-full aspect-square object-cover"
+          />
         </div>
-      </main>
+
+        <div className="p-5 flex flex-col flex-grow">
+          {/* Action Buttons */}
+          <div className="flex items-center space-x-6 mb-5">
+            <button 
+              onClick={() => handleLike(post.id)} 
+              className="transition-colors hover:text-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 rounded"
+              aria-label="Like post"
+            >
+              <Heart 
+                className="h-6 w-6" 
+                fill={likedPosts.has(post.id) ? "red" : "none"} 
+                stroke={likedPosts.has(post.id) ? "red" : "black"} 
+              />
+            </button>
+            <button 
+              onClick={() => setShowCommentInput(prev => ({ ...prev, [post.id]: !prev[post.id] }))} 
+              className="hover:text-blue-600 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded"
+              aria-label="Toggle comments"
+            >
+              <MessageCircle className="h-6 w-6" />
+            </button>
+            <button 
+              className="hover:text-green-600 transition-colors focus:outline-none focus:ring-2 focus:ring-green-400 rounded"
+              aria-label="Share post"
+            >
+              <Share2 className="h-6 w-6" />
+            </button>
+          </div>
+
+          {/* Likes count */}
+          <div className="font-semibold mb-3 text-gray-800">{post.likes.length.toLocaleString()} likes</div>
+
+          {/* Caption */}
+          <p className="text-sm text-gray-700 mb-4">
+            <span className="font-semibold mr-2">{post.user.username}</span>
+            {post.caption}
+          </p>
+
+          {/* Comments Section */}
+          {showCommentInput[post.id] && (
+            <div className="mt-auto">
+              <input
+                type="text"
+                value={commentText[post.id] || ""}
+                onChange={(e) => setCommentText({ ...commentText, [post.id]: e.target.value })}
+                placeholder="Add a comment..."
+                className="border border-gray-300 rounded-lg p-2 w-full focus:ring-2 focus:ring-purple-500 focus:outline-none"
+              />
+              <button 
+                onClick={() => handleComment(post.id)} 
+                className="bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg px-5 py-2 mt-3 w-full hover:from-purple-700 hover:to-pink-700 transition-colors"
+              >
+                Post
+              </button>
+
+              <div className="mt-4 max-h-48 overflow-y-auto space-y-2">
+                {post.comments.slice(0, showMoreComments[post.id] ? post.comments.length : 6).map((c, index) => (
+                  <p key={index} className="text-xs text-gray-500">
+                    {c.comment} <span className="font-semibold">- {c.user?.username || "Anonymous"}</span>
+                  </p>
+                ))}
+                {post.comments.length > 6 && (
+                  <button
+                    onClick={() => setShowMoreComments(prev => ({ ...prev, [post.id]: !prev[post.id] }))}
+                    className="text-blue-600 hover:underline text-xs mt-1"
+                  >
+                    {showMoreComments[post.id] ? 'View Less' : 'View More'}
+                  </button>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* Contact Tailor Button */}
+          <div className="mt-6">
+            <button
+              onClick={() => navigate('/select-tailor')}
+              className="
+                bg-blue-600 
+                text-white 
+                px-6 
+                py-3 
+                rounded-lg 
+                shadow-md 
+                hover:bg-blue-700 
+                hover:shadow-lg 
+                transform 
+                transition 
+                duration-300 
+                ease-in-out 
+                active:scale-95
+                focus:outline-none 
+                focus:ring-4 
+                focus:ring-blue-400
+                w-full
+                font-semibold
+                text-lg
+              "
+            >
+              Contact a Tailor
+            </button>
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+</main>
+
     </div>
   );
 };

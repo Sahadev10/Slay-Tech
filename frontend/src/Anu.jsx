@@ -44,6 +44,7 @@ import GenTop from "./components/gen_top.jsx";
 import "./Anu.css";
 import BodyMeasure from "./components/measurement.jsx";
 import TailorList from "./components/tailorlist.jsx"; 
+import Customization from "./components/customisation.jsx";
 import TailorRegistration from "./components/tailor.jsx";
 
 
@@ -58,6 +59,7 @@ const Anu = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/home" element={<Home />} />
+      <Route path="/customization" element={<Customization />} />
 
       <Route path="/sm" element={<Stylemix />} />
         <Route path="/select-tailor" element={<TailorList />} />
@@ -69,8 +71,8 @@ const Anu = () => {
       <Route path="/profile" element={<Profile />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/logout" element={<Contact />} />
-      <Route path="/dress" element={<Dress />} />
-
+      <Route path="/dress" element={<GenDress />} />
+<Route path="/vr" element={<Vr />} />
       <Route path="/genblazer" element={<GenBrazer />} />
       <Route path="/gendress" element={<GenDress />} />
       <Route path="/gentop" element={<GenTop />} />

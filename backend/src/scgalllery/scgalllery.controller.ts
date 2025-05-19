@@ -71,7 +71,7 @@ export class GalleryController {
 
     @Post(':userId/add')
   async addImageToGallery(
-    @Param('userId') userId: string,
+    @Param('userId') userId: number,
     @Body() createGalleryDto: CreateGalleryDto,
   ) {
     return this.galleryService.addImage(userId, createGalleryDto.imageUrl, createGalleryDto.caption);
@@ -90,7 +90,6 @@ export class GalleryController {
     if (!req.user) throw new Error('Unauthorized');
     return this.galleryService.addComment( galleryId, text,req.user);
   }
-
 
   @UseGuards(JwtAuthGuard)
 @Get('me')

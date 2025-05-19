@@ -10,7 +10,7 @@ export class ImageService {
 
 
 
-  async saveImage(user_id: string, imageUrl: string): Promise<Image> {
+  async saveImage(user_id: number, imageUrl: string): Promise<Image> {
     const image = this.imageRepo.create({
         auth: { id: user_id },
         image_url: imageUrl,
@@ -27,7 +27,7 @@ async getImageById(image_id: string): Promise<Image> {
     return image;
 }
 
-async getImagesByUserId(user_id: string): Promise<Image[]> {
+async getImagesByUserId(user_id: number): Promise<Image[]> {
     return this.imageRepo.find({
         where: { auth: { id: user_id } },
         relations: ['auth'],

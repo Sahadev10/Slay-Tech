@@ -250,6 +250,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { jwtDecode } from 'jwt-decode';
+
 import {
   LogOut,
   MapPin,
@@ -258,6 +259,12 @@ import {
   Instagram,
   Twitter,
 } from 'lucide-react';
+
+interface GalleryImage {
+  id: string;
+  imageUrl: string;
+  caption: string | null;
+}
 
 import { useNavigate } from "react-router-dom";
 
@@ -281,7 +288,6 @@ function Profile() {
         setUsername(decoded.sub || 'User');
       } catch (error) {
         console.error("Invalid token", error);
-
       }
     }
 
@@ -354,7 +360,6 @@ function Profile() {
                     alt={`Gallery image ${index + 1}`}
                     className="absolute inset-0 w-full h-full object-cover rounded-lg"
                   />
-
                 </div>
               ))
             ) : (
@@ -363,7 +368,6 @@ function Profile() {
           </div>
         </div>
       </div>
-
     </div>
   );
 }

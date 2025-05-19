@@ -4,10 +4,12 @@ import { Home, UserCircle2, ShoppingCart, Camera, Shirt } from "lucide-react";
 
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     setIsLoggedIn(!!token);
+    setLoading(false);
   }, []);
 
   const handleLogout = () => {
@@ -60,24 +62,25 @@ const Navbar = () => {
             <Link to="/sm" className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors group relative">
               <ShoppingCart className="w-4 h-4 group-hover:text-purple-400" />
               <span>Fusion</span>
-              
             </Link>
           </li>
           <li className="ml-4">
-            {isLoggedIn ? (
-              <button
-                onClick={handleLogout}
-                className="px-4 py-2 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-all transform hover:scale-105 shadow-lg"
-              >
-                Logout
-              </button>
-            ) : (
-              <Link
-                to="/LoginReg"
-                className="px-4 py-2 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-all transform hover:scale-105 shadow-lg"
-              >
-                Login
-              </Link>
+            {!loading && (
+              isLoggedIn ? (
+                <button
+                  onClick={handleLogout}
+                  className="px-4 py-2 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-all transform hover:scale-105 shadow-lg"
+                >
+                  Logout
+                </button>
+              ) : (
+                <Link
+                  to="/LoginReg"
+                  className="px-4 py-2 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-all transform hover:scale-105 shadow-lg"
+                >
+                  Login
+                </Link>
+              )
             )}
           </li>
         </ul>
@@ -108,20 +111,22 @@ const Navbar = () => {
           <Link to="/sm" className="block px-3 py-2 rounded-md text-white hover:bg-gray-700 transition-colors">
             Fusion
           </Link>
-          {isLoggedIn ? (
-            <button
-              onClick={handleLogout}
-              className="block px-3 py-2 rounded-md bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-colors w-full text-left"
-            >
-              Logout
-            </button>
-          ) : (
-            <Link
-              to="/LoginReg"
-              className="block px-3 py-2 rounded-md bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-colors w-full text-left"
-            >
-              Login
-            </Link>
+          {!loading && (
+            isLoggedIn ? (
+              <button
+                onClick={handleLogout}
+                className="block px-3 py-2 rounded-md bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-colors w-full text-left"
+              >
+                Logout
+              </button>
+            ) : (
+              <Link
+                to="/LoginReg"
+                className="block px-3 py-2 rounded-md bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-colors w-full text-left"
+              >
+                Login
+              </Link>
+            )
           )}
         </div>
       </div>
