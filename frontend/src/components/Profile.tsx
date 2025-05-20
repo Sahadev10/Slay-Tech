@@ -281,31 +281,35 @@ function Profile() {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-
+  
     if (token) {
       try {
-        const decoded = jwtDecode<{ sub: string }>(token);
-        setUsername(decoded.sub || 'User');
+        const decoded = jwtDecode<{ sub: number }>(token);  // use number instead of string
+        const userId = decoded.sub;
+        console.log("Decoded userId:", userId);
+        setUsername(userId?.toString() || 'User');
+  
+        if (userId) {
+          fetch(`http://localhost:3000/gallery/me?userId=${userId}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log("Fetched gallery data:", data);
+              setGalleryImages((data || []).filter((img: GalleryImage) => img.imageUrl?.startsWith('http')));
+            })
+            .catch((err) => {
+              console.error("Failed to fetch gallery", err);
+            });
+        }
       } catch (error) {
         console.error("Invalid token", error);
       }
     }
-
-    fetch('http://localhost:3000/gallery/me', {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("Fetched gallery data:", data);
-        // ✅ Use data directly and filter valid URLs
-        setGalleryImages((data || []).filter((img: GalleryImage) => img.imageUrl?.startsWith('http')));
-      })
-      .catch((err) => {
-        console.error("Failed to fetch gallery", err);
-      });
   }, []);
+  
 
   return (
     <div className="min-h-screen bg-gray-50">

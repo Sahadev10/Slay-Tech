@@ -59,6 +59,7 @@ import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { AuthenticatedRequest } from '../auth/request.interface';
 import { CreateGalleryDto } from './dto/create-scgalllery.dto';
 import { Param } from '@nestjs/common';
+import { Query } from '@nestjs/common';
 
 @Controller('gallery')
 export class GalleryController {
@@ -91,10 +92,20 @@ export class GalleryController {
     return this.galleryService.addComment( galleryId, text,req.user);
   }
 
-  @UseGuards(JwtAuthGuard)
+//   @UseGuards(JwtAuthGuard)
+// @Get('me')
+// async getMyImages(@Req() req: AuthenticatedRequest) {
+//   if (!req.user) throw new Error('Unauthorized');
+//   console.log("aaa",req.user.userId);
+//   return this.galleryService.getUserGallery(req.user.userId);
+// }
+
+@UseGuards(JwtAuthGuard)
 @Get('me')
-async getMyImages(@Req() req: AuthenticatedRequest) {
-  if (!req.user) throw new Error('Unauthorized');
-  return this.galleryService.getUserGallery(req.user.userId);
+async getMyImages(@Query('userId') userId: string) {
+  if (!userId) throw new Error('Unauthorized');
+  const numericId = parseInt(userId, 10);
+  console.log("User ID:", numericId);
+  return this.galleryService.getUserGallery(numericId);
 }
 }

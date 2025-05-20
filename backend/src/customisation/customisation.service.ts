@@ -24,8 +24,27 @@ export class CustomisationService {
 // }
 
 
+// async saveImage(user_id: number, imageUrl: string): Promise<Customisation> {
+//   const user = await this.authRepository.findOne({ where: { id: user_id } });
+
+//   if (!user) {
+//     throw new Error('User not found');
+//   }
+
+//   const image = this.cusRepo.create({
+//     auth: user,
+//     cus_image_url: imageUrl,
+//   });
+
+//   return this.cusRepo.save(image);
+// }
+
+
 async saveImage(user_id: number, imageUrl: string): Promise<Customisation> {
+  console.log('user_id in service:', user_id);
+
   const user = await this.authRepository.findOne({ where: { id: user_id } });
+  console.log('User from DB:', user);
 
   if (!user) {
     throw new Error('User not found');
@@ -38,6 +57,7 @@ async saveImage(user_id: number, imageUrl: string): Promise<Customisation> {
 
   return this.cusRepo.save(image);
 }
+
 
 async getImageById(image_id: number): Promise<Customisation> {
     const image = await this.cusRepo.findOne({

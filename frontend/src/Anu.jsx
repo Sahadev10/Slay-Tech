@@ -25,7 +25,7 @@
 
 // export default Anu;
 
-
+import Vrk from "./components/vrkalor.jsx";
 import Navbar from "./components/Nav.jsx";
 import Home from "./components/Home.jsx";
 import { Routes, Route } from "react-router-dom";
@@ -34,7 +34,7 @@ import Urpic from "./components/pic";
 import { Cart } from './components/Cart';
 import Dress from "./components/dress";
 import Socio from "./components/social";
-import Vr from "./components/vr.jsx";
+import Vr from "./components/vr.tsx";
 import Footer from "./components/Footer.jsx";
 
 import Stylemix from "./components/Stylemix.jsx";
@@ -57,6 +57,7 @@ const Anu = () => {
   <Navbar />
   <div className="main-content"> {/* Add padding to push content down */}
     <Routes>
+
       <Route path="/" element={<Home />} />
       <Route path="/home" element={<Home />} />
       <Route path="/customization" element={<Customization />} />
@@ -67,6 +68,7 @@ const Anu = () => {
         <Route path="/tailor" element={<TailorRegistration />} />
 
       <Route path="/social" element={<Socio />} />
+      <Route path="/vrk" element={<Vrk />} />
       <Route path="/picture" element={<Urpic />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/cart" element={<Cart />} />
