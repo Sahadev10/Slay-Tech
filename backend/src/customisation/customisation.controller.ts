@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { CustomisationService } from './customisation.service';
 import { CreateCustomisationDto } from './dto/create-customisation.dto';
 import { UpdateCustomisationDto } from './dto/update-customisation.dto';
-
+import { ParseIntPipe } from '@nestjs/common';
 import {
 
   UploadedFile,
@@ -35,10 +35,14 @@ export class CustomisationController {
   )
   async uploadImage(
     @UploadedFile() file: Express.Multer.File,
-    @Param('user_id') user_id: number,
+    // @Param('user_id') user_id: number,
+    @Param('user_id', ParseIntPipe) user_id: number,
+
   ) {
+
     // Generate a public URL to access the file
     const imageUrl = `${process.env.BASE_URL}/CUSuploads/${file.filename}`;
+    console.log(user_id);
   
     // Save the user ID and image URL to the database
     return this.customisationService.saveImage(user_id, imageUrl);
@@ -78,6 +82,20 @@ export class CustomisationController {
   @UseGuards(JwtAuthGuard)
   @Get('/cust/image')
   async customize(@Req() req: any) {
+    const userId = req.user?.id;
+
+    if (!userId) {
+      return { message: 'User ID not found in token' };
+    }
+
+    const redirectUrl = `https://huggingface.co/spaces/SLAYTECH/LaatenSpaceManipulation?user_id=${userId}`;
+    return { redirectUrl };
+  }
+
+
+  @UseGuards(JwtAuthGuard)
+  @Get('/cust2/image')
+  async customizeother(@Req() req: any) {
     const userId = req.user?.id;
 
     if (!userId) {

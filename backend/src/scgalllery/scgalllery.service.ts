@@ -211,11 +211,12 @@ export class GalleryService {
 
 
   async getUserGallery(userId: number) {
+    console.log("user gallery", userId);
     return this.galleryRepository.find({
       where: { user: { id: userId } },
-      
     });
   }
+  
   
   
 }
