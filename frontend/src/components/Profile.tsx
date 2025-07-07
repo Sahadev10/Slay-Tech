@@ -284,10 +284,23 @@ function Profile() {
   
     if (token) {
       try {
-        const decoded = jwtDecode<{ sub: number }>(token);  // use number instead of string
+        // const decoded = jwtDecode<{ sub: number }>(token);  // use number instead of string
+       
+        // console.log("Decoded userId:", userId);
+        // setUsername(userId?.toString() || 'User');
+
+        const decoded = jwtDecode<{ sub: number; username: string }>(token);
         const userId = decoded.sub;
-        console.log("Decoded userId:", userId);
-        setUsername(userId?.toString() || 'User');
+        // setUsername(decoded.username || 'User');
+
+        const rawUsername = decoded.username || 'User';
+const displayName = rawUsername.includes('@')
+  ? rawUsername.split('@')[0]
+  : rawUsername;
+
+setUsername(displayName);
+
+
   
         if (userId) {
           fetch(`http://localhost:3000/gallery/me?userId=${userId}`, {
@@ -328,16 +341,16 @@ function Profile() {
       <div className="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Left Column */}
         <div className="bg-white rounded-lg shadow p-6 flex flex-col items-center">
-          <img
+          {/* <img
             src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=200&h=200"
             alt="Profile"
             className="w-32 h-32 rounded-full object-cover border-4 border-white shadow-lg"
-          />
+          /> */}
           <h2 className="mt-4 text-xl font-semibold">{username}</h2>
-          <p className="text-gray-500 flex items-center mt-2">
+          {/* <p className="text-gray-500 flex items-center mt-2">
             <MapPin className="w-4 h-4 mr-2" />
             User's Address
-          </p>
+          </p> */}
           <button
             onClick={() => navigate("/picture")}
             className="mt-4 flex items-center px-4 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition-colors"

@@ -180,12 +180,12 @@ const Urpic: React.FC = () => {
   useEffect(() => {
     const fetchImages = async () => {
       const token = localStorage.getItem("token");
-
+  
       if (!token) {
         console.error("No token found");
         return;
       }
-
+  
       let userId;
       try {
         const decoded: { sub: number } = jwtDecode(token);
@@ -194,31 +194,43 @@ const Urpic: React.FC = () => {
         console.error("Invalid token", err);
         return;
       }
-
+  
       try {
-        const [response1, response2] = await Promise.all([
+        const [response1, response2, response3] = await Promise.all([
           axios.get<Image[]>(`http://localhost:3000/images/user/${userId}`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
           axios.get(`http://localhost:3000/customisation/user/${userId}`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
+          axios.get<Image[]>(`http://localhost:3000/image/user`, {
+            params: { user_id: userId },
+            headers: { Authorization: `Bearer ${token}` },
+          }),
         ]);
+  
+        console.log("Image response3:", response3.data);
 
         const customisationImages: Image[] = response2.data.map((item: any) => ({
           image_id: item.cus_img_id.toString(),
           image_url: item.cus_image_url,
         }));
-
-        const combinedImages = [...response1.data, ...customisationImages];
+  
+        const combinedImages = [
+          ...response1.data,
+          ...customisationImages,
+          ...response3.data,
+        ];
+  
         setImages(combinedImages);
       } catch (err) {
         console.error("Error fetching images", err);
       }
     };
-
+  
     fetchImages();
   }, []);
+  
 
   const handleAddToGallery = async (imageUrl: string) => {
     const token = localStorage.getItem("token");

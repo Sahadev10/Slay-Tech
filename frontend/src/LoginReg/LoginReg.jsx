@@ -147,7 +147,7 @@ const LoginReg = () => {
         <p onClick={toggleForm} className="toggle-text">
           {isRegister ? "Already have an account? Login" : "Don't have an account? Register"}
         </p>
-        {!isRegister && <p className="forgot-password">Forgot Password?</p>}
+        {/* {!isRegister && <p className="forgot-password">Forgot Password?</p>} */}
       </div>
     </div>
   </div>

@@ -109,7 +109,7 @@ const Socio: React.FC = () => {
   };
 
   return (
-    <div className="bg-black text-white min-h-screen">
+    <div className="bg-gradient-to-r from-purple-100 to-pink-100 text-black min-h-screen">
       {/* Navigation */}
      <nav className="bg-white py-1 px-4 shadow-xl fixed w-full top-16 z-40">
   <div className="max-w-5xl mx-auto px-4">
@@ -177,12 +177,12 @@ const Socio: React.FC = () => {
             >
               <MessageCircle className="h-6 w-6" />
             </button>
-            <button 
+            {/* <button 
               className="hover:text-green-600 transition-colors focus:outline-none focus:ring-2 focus:ring-green-400 rounded"
               aria-label="Share post"
             >
               <Share2 className="h-6 w-6" />
-            </button>
+            </button> */}
           </div>
 
           {/* Likes count */}

@@ -102,7 +102,7 @@ export class CustomisationController {
       return { message: 'User ID not found in token' };
     }
 
-    const redirectUrl = `https://huggingface.co/spaces/SLAYTECH/LaatenSpaceManipulation?user_id=${userId}`;
+    const redirectUrl = `https://huggingface.co/spaces/SLAYTECH/LatenSpaceManipulationDress?user_id=${userId}`;
     return { redirectUrl };
   }
   

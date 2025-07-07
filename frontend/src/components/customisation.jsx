@@ -33,7 +33,7 @@ const customization = () => {
     const token = localStorage.getItem("token");
 
     try {
-      const response = await fetch("http://localhost:3000/customisation/cust/image", {
+      const response = await fetch("http://localhost:3000/customisation/cust2/image", {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -105,7 +105,7 @@ const customization = () => {
             Loading...
           </>
         ) : (
-          "option a"
+          "Customize Top"
         )}
         <span className="absolute bottom-1 left-1/4 w-1/2 h-1 bg-white rounded-full opacity-30 animate-pulse"></span>
       </button>
@@ -146,7 +146,7 @@ const customization = () => {
             Loading...
           </>
         ) : (
-          "Option b"
+          "Customize Dress"
         )}
         <span className="absolute bottom-1 left-1/4 w-1/2 h-1 bg-white rounded-full opacity-30 animate-pulse"></span>
       </button>

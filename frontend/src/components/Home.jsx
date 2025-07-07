@@ -137,7 +137,7 @@ const Home = () => {
     to="/sm"
     className="text-3xl italic font-semibold text-gray-700 hover:text-purple-600 transition-colors duration-200"
   >
-    FUSE THE CLOTHES
+    GENERATE NEW CLOTHES
   </Link>
 </div>
 
